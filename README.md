@@ -7,3 +7,5 @@
 	CH2_1_b: Discriminant function of a normal distribution given prior probability.
 	CH2_1_c: Calculate the Euclidean distance between two vectors.
 	CH2_1_d: Calculate the Mahalanobis distance of a vector.
+	
+	![CH2_2_test](https://github.com/chensonglu/Pattern-Classification-2nd-CH2/blob/master/CH2_2_test.png)
