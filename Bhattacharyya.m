@@ -14,5 +14,4 @@ function Perror = Bhattacharyya(u1, sigma1, u2, sigma2, P1)
 
 k_half = 1/8*(u2 - u1)'*inv((sigma1 + sigma2)/2)*(u2 - u1) + 1/2*log(det((sigma1+sigma2)/2)/sqrt(det(sigma1)*det(sigma2)));
 Perror = sqrt(P1*(1 - P1))*exp(-k_half);
-fprintf('k_half:%f and Perror:%f\n', k_half, Perror);
 
