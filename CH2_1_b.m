@@ -1,10 +1,10 @@
 function g = CH2_1_b(x, u, sigma, P)
-% g = CH2_1_b(x, u, sigma, P)
-% Discriminant function of a Gaussian distribution and a prior probability
+% function g = CH2_1_b(x, u, sigma, P)
+% Discriminant function of a normal distribution given prior probability.
 % Inputs:
-%   x     - Input number
-%   u     - Mean of a Gaussian distribution
-%   sigma - Covariance matrix
+%   x     - Input vector
+%   u     - Mean of distribution
+%   sigma - Covariance matrix of distribution
 %   P     - Prior probability
 %
 % Ouputs:
