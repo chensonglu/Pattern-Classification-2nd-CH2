@@ -1,5 +1,6 @@
 # Pattern-Classification-2nd-CH2
 ### The repository contains the code of 《Pattern Classification》2nd Chapter2.
+	CH2.mat: CH2 data
 
 	CH2_1_a: Generate random vectors from the multivariate normal distribution.
 	CH2_1_a_test: Generate two normal distributions and plot.
