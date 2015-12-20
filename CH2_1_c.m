@@ -1,5 +1,5 @@
 function E_dist = CH2_1_c(x1, x2)
-% function E_dist = CH2_1_c( x1, x2 )
+% function E_dist = CH2_1_c(x1, x2)
 % Calculate the Euclidean distance between two vectors.
 % Inputs:
 %   x1     - Vector x1
