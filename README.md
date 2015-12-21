@@ -38,9 +38,11 @@
 	CH2_8_a.m: 
 ![CH2_8_a_1](https://github.com/chensonglu/Pattern-Classification-2nd-CH2/blob/master/CH2_8_a_1.png)
 ![CH2_8_a_2](https://github.com/chensonglu/Pattern-Classification-2nd-CH2/blob/master/CH2_8_a_2.png)
+
 	CH2_8_b.m: 
 ![CH2_8_b_1](https://github.com/chensonglu/Pattern-Classification-2nd-CH2/blob/master/CH2_8_b_1.png)
 ![CH2_8_b_2](https://github.com/chensonglu/Pattern-Classification-2nd-CH2/blob/master/CH2_8_b_2.png)
+
 	CH2_8_c.m: 
 ![CH2_8_c_1](https://github.com/chensonglu/Pattern-Classification-2nd-CH2/blob/master/CH2_8_c_1.png)
 ![CH2_8_c_2](https://github.com/chensonglu/Pattern-Classification-2nd-CH2/blob/master/CH2_8_c_2.png)
