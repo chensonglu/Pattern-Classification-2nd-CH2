@@ -30,7 +30,7 @@
 ![CH2_6_test_1](https://github.com/chensonglu/Pattern-Classification-2nd-CH2/blob/master/CH2_6_test_1.png)
 ![CH2_6_test_2](https://github.com/chensonglu/Pattern-Classification-2nd-CH2/blob/master/CH2_6_test_2.png)
 
-	CH2_7.m: Calculate the Bhattacharyya bound, actual error, estimated error and a series of classification error of two Gauss distribution.
+	CH2_7.m: Calculate the Bhattacharyya bound, estimated error and a series of classification error of two Gauss distribution.
 	CH2_7_test.m: Test CH2_7.m.
 ![CH2_7_test_1](https://github.com/chensonglu/Pattern-Classification-2nd-CH2/blob/master/CH2_7_test_1.png)
 ![CH2_7_test_2](https://github.com/chensonglu/Pattern-Classification-2nd-CH2/blob/master/CH2_7_test_2.png)

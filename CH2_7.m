@@ -1,6 +1,6 @@
 function [Eerror, Bbound, Cerror] = CH2_7(u1, sigma1, u2, sigma2, P1, P2)
 % function [Eerror, Bbound, Cerror] = CH2_7(u1, sigma1, u2, sigma2, P1, P2)
-% Calculate the Bhattacharyya bound, actual error, estimated error and a
+% Calculate the Bhattacharyya bound, estimated error and a
 % series of classification error of two Gauss distribution.
 % Inputs:
 %   u1     - Mean of class1
@@ -35,7 +35,7 @@ for i = 1:size(inter_x, 1)
         num2str(inter_y(i)) ')']);
 end
 xlabel('x'), ylabel('y');
-legend('N(-0.5, 1)', 'N(0.5, 1)', 'intersection point');
+legend(['N(' num2str(u1) ', ' num2str(sigma1) ')'], ['N(' num2str(u2) ', ' num2str(sigma2) ')'], 'intersection point');
 
 %% Bhattacharyya bound
 Bbound = Bhattacharyya(u1, sigma1, u2, sigma2, P1);
