@@ -1,5 +1,5 @@
-function [Aerror, Eerror, Bbound, Cerror] = CH2_7(u1, sigma1, u2, sigma2, P1, P2)
-% function [Aerror, Eerror, Bbound, Cerror] = CH2_7(u1, sigma1, u2, sigma2, P1, P2)
+function [Eerror, Bbound, Cerror] = CH2_7(u1, sigma1, u2, sigma2, P1, P2)
+% function [Eerror, Bbound, Cerror] = CH2_7(u1, sigma1, u2, sigma2, P1, P2)
 % Calculate the Bhattacharyya bound, actual error, estimated error and a
 % series of classification error of two Gauss distribution.
 % Inputs:
@@ -11,35 +11,47 @@ function [Aerror, Eerror, Bbound, Cerror] = CH2_7(u1, sigma1, u2, sigma2, P1, P2
 %   P2     - Prior probability of class2
 %
 % Outputs:
-%   Aerror - Actual error 
 %   Eerror - Estimated error
 %   Bbound - Bhattacharyya bound
 %   Cerror - Classification error
 
+%% calculate the curve intersection point
+eq1 = ['y = ' num2str(P1) '*1/sqrt(2*pi*' num2str(sigma1) ')*exp(-(x - '  num2str(u1) ')^2/(2*' num2str(sigma1) '))'];
+eq2 = ['y = ' num2str(P2) '*1/sqrt(2*pi*' num2str(sigma2) ')*exp(-(x - '  num2str(u2) ')^2/(2*' num2str(sigma2) '))'];
+[inter_x, inter_y] = solve(eq1, eq2);
+inter_x = double(inter_x);
+inter_y = double(inter_y);
+
 %% plot Gauss distribution
 % Gauss distribution
 x = (-5:0.1:5)';
-y1 = gaussmf(x, [sigma1 u1]);
-y2 = gaussmf(x, [sigma2 u2]);
+y1 = P1*1/sqrt(2*pi*sigma1)*exp(-(x - u1).^2/(2*sigma1));
+y2 = P2*1/sqrt(2*pi*sigma2)*exp(-(x - u2).^2/(2*sigma2));
 plot(x, [y1 y2]);
-% boundary line
-l = zeros(11,1);
-y3 = 0:0.1:1;
 hold on;
-plot(l, y3, '--r');
+plot(inter_x, inter_y, 'rx', 'LineWidth', 2, 'MarkerSize', 10);
+for i = 1:size(inter_x, 1)
+    text(inter_x(i) + 0.2, inter_y(i), ['\leftarrow (' num2str(inter_x(i)) ', ' ...
+        num2str(inter_y(i)) ')']);
+end
 xlabel('x'), ylabel('y');
-legend('N(-0.5, 1)', 'N(0.5, 1)', 'boundary line');
+legend('N(-0.5, 1)', 'N(0.5, 1)', 'intersection point');
 
 %% Bhattacharyya bound
 Bbound = Bhattacharyya(u1, sigma1, u2, sigma2, P1);
 
-%% actual error using error function
-Aerror = (1 - erf(sqrt(2)/4))/2;
-
 %% estimated error using numerical integration
 % the intersection area of two Gauss distribution means error
 syms x;
-Eerror = (1- double(int(1/sqrt(2*pi*sigma1)*exp(-x^2/(2*sigma1)), -0.5, 0.5)))/2;
+if size(inter_x, 1) == 1
+    Eerror = double(int(P1*1/sqrt(2*pi*sigma1)*exp(-(x - u1)^2/(2*sigma1)), inter_x, Inf)) + ...
+        double(int(P2*1/sqrt(2*pi*sigma2)*exp(-(x - u2)^2/(2*sigma2)), -Inf, inter_x));
+else if size(inter_x, 1) == 2
+    Eerror = double(int(P1*1/sqrt(2*pi*sigma1)*exp(-(x - u1)^2/(2*sigma1)), inter_x(1), inter_x(2))) + ...
+        double(int(P2*1/sqrt(2*pi*sigma2)*exp(-(x - u2)^2/(2*sigma2)), -Inf, inter_x(1))) + ...
+        double(int(P2*1/sqrt(2*pi*sigma2)*exp(-(x - u2)^2/(2*sigma2)), inter_x(2), Inf));  
+    end
+end
 
 %% classification error
 m = 1;
@@ -65,10 +77,10 @@ for n = vec
     m = m + 1;
 end
 figure;
-plot(2*vec, Aerror*ones(1, size(vec, 2)), '-rs', 2*vec, Eerror*ones(1, size(vec, 2)), '--gv', ...
+plot(2*vec, Eerror*ones(1, size(vec, 2)), '--gv', ...
     2*vec, Bbound*ones(1, size(vec, 2)), '-.b*', 2*vec, Cerror, '-kd');
 xlabel('n'), ylabel('error');
-legend('Actual error', 'Estimated error', 'Bhattacharyya bound', 'Classification error');
+legend('Estimated error', 'Bhattacharyya bound', 'Classification error');
 end
 
 
