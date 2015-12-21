@@ -25,5 +25,5 @@ end
 min_beta = beta(index);
 
 Perror = P1^min_beta*(1 - P1)^(1 - min_beta)*exp(-k(index));
-fprintf('min beta:%f\n', min_beta);
-plot(beta, exp(-k));
+% fprintf('min beta:%f\n', min_beta);
+% plot(beta, exp(-k));
