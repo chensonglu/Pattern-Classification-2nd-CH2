@@ -18,12 +18,12 @@ function [error, Bbound, Cbound] = CH2_6(u1, sigma1, u2, sigma2, P1, P2)
 % Gauss distribution
 [x1_1, x1_2] = meshgrid(linspace(-4, 6, 100)', linspace(-5, 5, 100)');
 x1 = [x1_1(:) x1_2(:)];
-p1 = mvnpdf(x1, u1', sigma1);
+p1 = P1*mvnpdf(x1, u1', sigma1);
 surf(x1_1, x1_2, reshape(p1, 100, 100));
 hold on;
 [x2_1, x2_2] = meshgrid(linspace(-6,4,100)', linspace(-5,5,100)');
 x2 = [x2_1(:) x2_2(:)];
-p2 = mvnpdf(x2, u2', sigma2);
+p2 = P2*mvnpdf(x2, u2', sigma2);
 surf(x2_1, x2_2, reshape(p2, 100, 100));
 xlabel('x1'), ylabel('x2'), zlabel('p');
 % Obviously, surf x1 = 0 is the Bayes decision boundary.
