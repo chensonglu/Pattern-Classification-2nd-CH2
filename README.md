@@ -7,6 +7,7 @@
 	CH2_1_a.m: Generate random vectors from the multivariate normal distribution.
 	CH2_1_a_test.m: Generate two normal distributions and plot.
 ![CH2_1_a_test](https://github.com/chensonglu/Pattern-Classification-2nd-CH2/blob/master/CH2_1_a_test.png)
+
 	CH2_1_b.m: Discriminant function of a normal distribution given prior probability.
 	CH2_1_c.m: Calculate the Euclidean distance between two vectors.
 	CH2_1_d.m: Calculate the Mahalanobis distance of a vector.
