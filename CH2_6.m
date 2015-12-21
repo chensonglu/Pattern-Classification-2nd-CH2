@@ -1,4 +1,4 @@
-function error = CH2_6(u1, sigma1, u2, sigma2, P1, P2)
+function [error, Bbound, Cbound] = CH2_6(u1, sigma1, u2, sigma2, P1, P2)
 % function error = CH2_6(u1, sigma1, u2, sigma2, P1, P2)
 % Calculate the classification error of two classes.
 % Inputs:
@@ -11,6 +11,8 @@ function error = CH2_6(u1, sigma1, u2, sigma2, P1, P2)
 %
 % Outputs:
 %   error  - Classification error
+%   Bbound - Bhattacharyya bound
+%   Cbound - Chernoff bound
 
 %% plot Gauss distribution
 % Gauss distribution
@@ -28,8 +30,8 @@ xlabel('x1'), ylabel('x2'), zlabel('p');
 
 %% classification error, Bhattacharyya bound, Chernoff bound
 figure;
-Berror = Bhattacharyya(u1, sigma1, u2, sigma2, P1);
-Cerror = Chernoff(u1, sigma1, u2, sigma2, P1);
+Bbound = Bhattacharyya(u1, sigma1, u2, sigma2, P1);
+Cbound = Chernoff(u1, sigma1, u2, sigma2, P1);
 for n = 100:100:1000
     r1 = CH2_1_a(u1, sigma1, n/2);
     r2 = CH2_1_a(u2, sigma2, n/2);
@@ -49,8 +51,8 @@ for n = 100:100:1000
     end
     error(n/100) = (error1_2 + error2_1)/n;
 end
-plot(100:100:1000, Berror*ones(1, 10), '-r*', ...
-    100:100:1000, Cerror*ones(1, 10), '--bo', ...
+plot(100:100:1000, Bbound*ones(1, 10), '-r*', ...
+    100:100:1000, Cbound*ones(1, 10), '--bo', ...
     100:100:1000, error, '-.gs');
 xlabel('n'), ylabel('error');
 legend('Bhattacharyya bound', 'Chernoff bound', 'Classification error');
