@@ -57,8 +57,8 @@ end
 m = 1;
 vec = [10 50 100 200 500 1000];
 for n = vec
-    r1 = CH2_1_a(u1, sigma1, n);
-    r2 = CH2_1_a(u2, sigma2, n);
+    r1 = CH2_1_a(u1, sigma1, round(P1*2*n));
+    r2 = CH2_1_a(u2, sigma2, 2*n - round(P1*2*n));
     % error1_2: number of class1 misclassified to class2
     % error2_1: number of class2 misclassified to class1
     error1_2 = 0;
@@ -68,10 +68,12 @@ for n = vec
         if(CH2_1_b(r1(i, :)', u1, sigma1, P1) < CH2_1_b(r1(i, :)', u2, sigma2, P2))
             error1_2 = error1_2 + 1;
         end
-        % class2 misclassified to class1
-        if(CH2_1_b(r2(i, :)', u2, sigma2, P2) < CH2_1_b(r2(i, :)', u1, sigma1, P1))
+    end
+    for j = 1:size(r2, 1)
+       % class2 misclassified to class1
+        if(CH2_1_b(r2(j, :)', u2, sigma2, P2) < CH2_1_b(r2(j, :)', u1, sigma1, P1))
             error2_1 = error2_1 + 1;
-        end
+        end 
     end
     Cerror(m) = (error1_2 + error2_1)/(2*n);
     m = m + 1;
