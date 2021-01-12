@@ -1,6 +1,6 @@
 # Pattern-Classification-2nd-CH2
 ### The repository contains the code of 《Pattern Classification》2nd Chapter2.
-### Please refer to the ![blog](https://blog.csdn.net/lkj345/article/details/50480317) for more details.
+### Please refer to the blog (https://blog.csdn.net/lkj345/article/details/50480317) for more details.
 	Bhattacharyya.m: Find the Bhattacharyya bound given means and covariances of single gaussian distributions.
 
 	CH2.mat: CH2 data.
